@@ -16,12 +16,12 @@ public class PolicyMapper {
             return null;
         }
         return Policy.builder()
-                .customerId(dto.getCustomerId())
-                .policyType(dto.getPolicyType())
-                .coverageAmount(dto.getCoverageAmount())
-                .premiumAmount(dto.getPremiumAmount())
-                .startDate(dto.getStartDate())
-                .endDate(dto.getEndDate())
+                .customerId(dto.customerId())
+                .policyType(dto.policyType())
+                .coverageAmount(dto.coverageAmount())
+                .premiumAmount(dto.premiumAmount())
+                .startDate(dto.startDate())
+                .endDate(dto.endDate())
                 .status(PolicyStatus.ACTIVE)
                 .build();
     }
@@ -31,18 +31,17 @@ public class PolicyMapper {
             return null;
         }
 
-        PolicyResponseDTO dto = new PolicyResponseDTO();
-        dto.setPolicyId(policy.getPolicyId());
-        dto.setCustomerId(policy.getCustomerId());
-        dto.setPolicyType(policy.getPolicyType());
-        dto.setCoverageAmount(policy.getCoverageAmount());
-        dto.setPremiumAmount(policy.getPremiumAmount());
-        dto.setStartDate(policy.getStartDate());
-        dto.setEndDate(policy.getEndDate());
-        dto.setStatus(policy.getStatus().name());
-        dto.setCreatedAt(policy.getCreatedAt());
-        dto.setUpdatedAt(policy.getUpdatedAt());
-
-        return dto;
+       return new PolicyResponseDTO(
+        policy.getPolicyId(),
+                policy.getCustomerId(),
+                policy.getPolicyType(),
+                policy.getCoverageAmount(),
+                policy.getPremiumAmount(),
+                policy.getStartDate(),
+                policy.getEndDate(),
+                policy.getStatus().name(),
+                policy.getCreatedAt(),
+                policy.getUpdatedAt()
+       );
     }
 }
