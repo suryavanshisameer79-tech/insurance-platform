@@ -9,28 +9,28 @@ public class CustomerMapper { //Mapper Class (Entity ↔ DTO)
 
     public static Customer toEntity(CustomerRequestDto dto) {
         return Customer.builder()
-                .firstName(dto.getFirstName()).
-                lastName(dto.getLastName()).
-                email(dto.getEmail()).
-                phone(dto.getPhone()).
-                address(dto.getAddress()).
-                city(dto.getCity()).
-                state(dto.getState()).
-                pincode(dto.getPincode()).
-                build();
+                .firstName(dto.firstName())
+                .lastName(dto.lastName())
+                .email(dto.email())
+                .phone(dto.phone())
+                .address(dto.address())
+                .city(dto.city())
+                .state(dto.state())
+                .pincode(dto.pincode())
+                .build();
     }
 
-    public static CustomerResponseDto toDTO(Customer entity){
-        return CustomerResponseDto.builder()
-                .id(entity.getId())
-                .firstName(entity.getFirstName())
-                .lastName(entity.getLastName())
-                .email(entity.getEmail())
-                .phone(entity.getPhone())
-                .address(entity.getAddress())
-                .city(entity.getCity())
-                .state(entity.getState())
-                .pincode(entity.getPincode())
-                .build();
+    public static CustomerResponseDto toDTO(Customer entity) {
+        return new CustomerResponseDto(
+                entity.getId(),
+                entity.getFirstName(),
+                entity.getLastName(),
+                entity.getEmail(),
+                entity.getPhone(),
+                entity.getAddress(),
+                entity.getCity(),
+                entity.getState(),
+                entity.getPincode()
+                );
     }
 }
