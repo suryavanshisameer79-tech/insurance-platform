@@ -4,7 +4,9 @@ import com.maximus.insurance.claim_service.entity.ClaimStatus;
 
 import java.util.List;
 
-public class ClaimListResponseDto {
+public record ClaimListResponseDto(
 
-    private List<ClaimResponseDto> claims;
+        List<ClaimResponseDto> claims
+) {
+
 }

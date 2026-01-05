@@ -13,11 +13,11 @@ public class ClaimMapper {
     // Convert CreateRequest → Entity
     public static Claim toEntity(ClaimCreateRequestDto requestDto){
         return Claim.builder()
-                .customerId(requestDto.getCustomerId())
-                .policyId(requestDto.getPolicyId())
-                .claimAmount(requestDto.getClaimAmount())
-                .claimType(requestDto.getClaimType())
-                .description(requestDto.getDescription())
+                .customerId(requestDto.customerId())
+                .policyId(requestDto.policyId())
+                .claimAmount(requestDto.claimAmount())
+                .claimType(requestDto.claimType())
+                .description(requestDto.description())
                 .claimStatus(ClaimStatus.OPEN)                       // default
                 .submittedDate(LocalDateTime.now())                 // default timestamp
                 .build();
@@ -25,26 +25,26 @@ public class ClaimMapper {
 
     // Convert Entity → Response DTO
     public static ClaimResponseDto toResponse(Claim claim){
-        return ClaimResponseDto.builder()
-                .id(claim.getId())
-                .customerId(claim.getCustomerId())
-                .policyId(claim.getPolicyId())
-                .claimAmount(claim.getClaimAmount())
-                .claimType(claim.getClaimType())
-                .claimStatus(claim.getClaimStatus())
-                .submittedDate(claim.getSubmittedDate())
-                .updatedDate(claim.getUpdatedDate())
-                .description(claim.getDescription())
-                .build();
+        return new ClaimResponseDto(
+                claim.getId(),
+                claim.getCustomerId(),
+                claim.getPolicyId(),
+                claim.getClaimAmount(),
+                claim.getClaimType(),
+                claim.getClaimStatus(),
+                claim.getSubmittedDate(),
+                claim.getUpdatedDate(),
+                claim.getDescription()
+        );
     }
 
     // Apply status update → Entity (partial update)
     public static void applyStatusUpdate(Claim claim, ClaimUpdateStatusRequestDto claimUpdateStatusRequestDto){
-                claim.setClaimStatus(claimUpdateStatusRequestDto.getClaimStatus());
+                claim.setClaimStatus(claimUpdateStatusRequestDto.claimStatus());
                 claim.setUpdatedDate(LocalDateTime.now());
 
-                if (claimUpdateStatusRequestDto.getDescription() != null){
-                    claim.setDescription(claimUpdateStatusRequestDto.getDescription());
+                if (claimUpdateStatusRequestDto.description() != null){
+                    claim.setDescription(claimUpdateStatusRequestDto.description());
                 }
     }
 }

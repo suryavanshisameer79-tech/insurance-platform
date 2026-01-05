@@ -6,29 +6,25 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Data
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class ClaimResponseDto {
+public record ClaimResponseDto(
 
-    private UUID id;
+         UUID id,
 
-    private Long customerId;
+         Long customerId,
 
-    private UUID policyId;
+         UUID policyId,
 
-    private Double claimAmount;
+         Double claimAmount,
 
-    private String claimType;
+         String claimType,
 
-    private ClaimStatus claimStatus;
+         ClaimStatus claimStatus,
 
-    private LocalDateTime submittedDate;
+         LocalDateTime submittedDate,
 
-    private LocalDateTime updatedDate;
+         LocalDateTime updatedDate,
 
-    private String description;
+         String description
+
+) {
 }

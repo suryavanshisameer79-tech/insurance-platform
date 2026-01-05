@@ -4,16 +4,12 @@ import com.maximus.insurance.claim_service.entity.ClaimStatus;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-@Data
-@Setter
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class ClaimUpdateStatusRequestDto {
+public record ClaimUpdateStatusRequestDto(
 
-    @NotNull
-    private ClaimStatus claimStatus;
+        @NotNull
+        ClaimStatus claimStatus,
 
-    private String description;     //Optional — can store rejection reason
+        String description     //Optional — can store rejection reason
+) {
+
 }

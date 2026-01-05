@@ -6,26 +6,22 @@ import lombok.*;
 
 import java.util.UUID;
 
-@Data
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class ClaimCreateRequestDto {
+public record ClaimCreateRequestDto(
 
-    @NotNull
-    private Long customerId;
+        @NotNull
+        Long customerId,
 
-    @NotNull
-    private UUID policyId;
+        @NotNull
+        UUID policyId,
 
-    @NotNull
-    @Positive
-    private Double claimAmount;
+        @NotNull
+        @Positive
+        Double claimAmount,
 
-    @NotNull
-    private String claimType;
+        @NotNull
+        String claimType,
 
-    private String description;
+        String description
+) {
+
 }
