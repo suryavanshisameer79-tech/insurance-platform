@@ -98,14 +98,14 @@ public class CustomerServiceImpl implements CustomerService{
     public CustomerResponseDto updateCustomer(Long id, CustomerRequestDto updateRequestDto) {
         Customer existing = customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
 
-        existing.setFirstName(updateRequestDto.getFirstName());
-        existing.setLastName(updateRequestDto.getLastName());
-        existing.setEmail(updateRequestDto.getEmail());
-        existing.setPhone(updateRequestDto.getPhone());
-        existing.setAddress(updateRequestDto.getAddress());
-        existing.setCity(updateRequestDto.getCity());
-        existing.setState(updateRequestDto.getState());
-        existing.setPincode(updateRequestDto.getPincode());
+        existing.setFirstName(updateRequestDto.firstName());
+        existing.setLastName(updateRequestDto.lastName());
+        existing.setEmail(updateRequestDto.email());
+        existing.setPhone(updateRequestDto.phone());
+        existing.setAddress(updateRequestDto.address());
+        existing.setCity(updateRequestDto.city());
+        existing.setState(updateRequestDto.state());
+        existing.setPincode(updateRequestDto.pincode());
 
         Customer updated = customerRepository.save(existing);
 
